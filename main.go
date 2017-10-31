@@ -1,5 +1,16 @@
-import "fmt"
+package main
 
-resp, err := http.Get('https://blockchain.info/pt/ticker')
+import (
+  "fmt"
+  "net/http"
+)
 
-fmt.Printf(resp)
+func main() {
+  request, err := http.NewRequest("GET", "https://blockchain.info/pt/ticker", nil)
+
+  client := http.Client{}
+  resp, err := client.Do(request)
+
+  fmt.Println(resp)
+  fmt.Println(err)
+}
